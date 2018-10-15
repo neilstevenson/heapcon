@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head" />
+
+<body>
+	<div th:include="fragments :: header">?</div>
+
+	<div class="mainpane">
+
+		<h1>Menu</h1>
+
+		<hr />
+		<h3 th:text="'Session Id : ' + ${#httpSession.id}">?</h3>
+
+		<hr />
+		<h2>Data</h2>
+		<table style="border-style: ridge;">
+			<tr>
+				<td>
+					<form name="select" th:action="@{/data/mykey}">
+						<input class="mySubmit" type="submit" value="MyKey" />
+					</form>
+				</td>
+				<td>
+					<form name="select" th:action="@{/data/mykeybydate}">
+						<input class="mySubmit" type="submit" value="MyKeyByDate" />
+					</form>
+				</td>
+				<td>
+					<form name="select" th:action="@{/data/mykeybyitem}">
+						<input class="mySubmit" type="submit" value="MyKeyByItem" />
+					</form>
+				</td>
+			</tr>
+		</table>
+
+		<hr />
+		<h2>Debug</h2>
+		<form name="select" th:action="@{/debug}">
+			<input class="mySubmit" type="submit" value="Debug" />
+		</form>
+
+	</div>
+
+	<div th:include="fragments :: footer">?</div>
+</body>
+
+</html>

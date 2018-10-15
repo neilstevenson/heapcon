@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head" />
+
+<body>
+	<div th:include="fragments :: header">?</div>
+
+	<div class="mainpane">
+
+		<h1 th:text="'Data for map \'' + ${mapname} + '\''">?</h1>
+
+		<hr />
+		<h3 th:text="'Page Render Time : ' + ${#dates.format(#dates.createNow(),'HH:mm:ss')}">?</h3>
+
+		<hr />
+		<h2>Distribution Information</h2>
+		<table class="myData">
+			<tr>
+				<th th:each="column : ${columns}" th:text="${column}" />
+			</tr>
+
+			<tr th:each="datum : ${data}">
+				<td th:each="item : ${datum}" th:text="${item}" />
+			</tr>
+		</table>
+
+		<hr />
+		<h2>Detail Information For Last 2 Of Each</h2>
+		<table class="myData">
+			<tbody th:each="entry : ${detail}">
+				<tr>
+					<th style="background-color: var(--serbia-red);" th:text="${entry.key}" />
+				</tr>
+				<tr>
+					<td>
+						<table>
+							<tr>
+								<th th:each="datum : ${entry.value[0]}" th:text="${datum}" />
+							</tr>
+							<tr>
+								<td th:each="datum : ${entry.value[1]}" th:text="${datum}" />
+							</tr>
+							<tr>
+								<td th:each="datum : ${entry.value[1]}" th:text="${datum}" />
+							</tr>
+						</table>						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</div>
+
+	<div th:include="fragments :: footer">?</div>
+</body>
+
+</html>

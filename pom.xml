@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.5.RELEASE</version>
+	</parent>
+
+	<groupId>neil.demo.heapcon</groupId>
+	<artifactId>heapcon</artifactId>
+	<version>1.0</version>
+	<packaging>pom</packaging>
+
+	<name>HeapCon</name>
+	<description>Project parent</description>
+
+	<properties>
+		<dockerfile-maven-plugin.version>1.4.7</dockerfile-maven-plugin.version>
+		<java.version>1.8</java.version>
+		<hazelcast.version>3.10.4</hazelcast.version>
+		<hazelcast-kubernetes.version>1.2</hazelcast-kubernetes.version>
+		<hazelcast-wm.version>3.8.3</hazelcast-wm.version>
+	</properties>
+
+	<modules>
+		<module>heapcon-business-logic</module>
+		<module>heapcon-hazelcast-client</module>
+		<module>heapcon-hazelcast-server</module>
+	</modules>
+
+	<dependencies>
+		<!-- Hazelcast server, client and web sessions -->
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast-all</artifactId>
+			<version>${hazelcast.version}</version>
+		</dependency>
+		<!-- Hazelcast Kubernetes plugin, used conditionally if in Kubernetes -->
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast-kubernetes</artifactId>
+			<version>${hazelcast-kubernetes.version}</version>
+		</dependency>
+
+		<!-- Generates getters, setters, toString(), etc -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+
+		<!-- For web page access -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- Define but deactivate dockerization. Turn on in some modules -->
+		<plugins>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>${dockerfile-maven-plugin.version}</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

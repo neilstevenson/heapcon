@@ -1,0 +1,8 @@
+# Pick a random HTTP port that is not in use
+server:
+  port: 0
+
+# Build uses filtering to inject module name
+spring:
+  application:
+    name: '@project.artifactId@'
