@@ -1,0 +1,12 @@
+---
+applications:
+- name: neilapp
+  memory: 1024M
+  buildpacks:
+  - java_buildpack_offline
+  # External URL for incoming HTTP traffic
+  routes:
+  - route: heapcon.apps.pcf-demo.hazelcast.com
+  # Bind the app to the service with this name:
+  services:
+  - neil

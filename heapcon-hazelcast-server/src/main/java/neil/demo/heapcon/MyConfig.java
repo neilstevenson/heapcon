@@ -61,16 +61,16 @@ public class MyConfig {
 	 * <p>There are four parts to this:
 	 * </p>
 	 * <ol>
-	 * <li><p><b>Remove old discopvery : </b>The XML file specifies the
-	 * TCP/IP addresses to try to find other services. These addresses
+	 * <li><p><b>Remove old discovery : </b>The XML file specifies the
+	 * TCP/IP addresses to try to find other servers. These addresses
 	 * will be wrong now, so turn them off so we don't bother trying them.
 	 * <p></li>
 	 * <li><p><b>Configure new discovery : </b>Make a Kubernetes discovery
 	 * object, since we wish to discover via Kubernetes, and provide the
 	 * name of the Kubernetes service (a String) that we will be discovering.
 	 * <p></li>
-	 * <li><p><b>Turn on new discopvery : </b>Activate the plugin discovery
-	 * mechasnim.
+	 * <li><p><b>Turn on new discovery : </b>Activate the plugin discovery
+	 * mechanism.
 	 * <p></li>
 	 * <li><p><b>New Management Center location : </b>Amend the Management
 	 * Center URL with the Kubernetes load balancer address that will

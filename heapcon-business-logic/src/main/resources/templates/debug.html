@@ -28,7 +28,9 @@
 		<hr />
 		<h2>Session Information</h2>
 
-		<h3 th:text="'Total Sessions : ' + ${totalSessions}">?</h3>
+		<!--/* PCF Tile doesn't do session storage */-->
+		<h3 th:if="${totalSessions} > 0"
+			th:text="'Total Sessions : ' + ${totalSessions}">?</h3>
 		
 		<table class="myData">
 			<tr>
